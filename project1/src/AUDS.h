@@ -9,49 +9,73 @@ template <typename T>
 class AUDS{
 
 public:
-     AUDS(){
-          initial_size = 0;
-          current_size = 0;
-          data = new T[initial_size];
-     }
+	AUDS(){
+		current_size = 100;
+		current_value = 0;
+		data = new T[current_size];
+	}
      
-     AUDS(const AUDS &other){
-          initial_size = other.initial_size;
-          current_size = other.current_size;
+	AUDS(const AUDS &other){
+		current_size = other.current_size;
+		current_value = other.current_value;
           
-          data = new T[initial_size];
-          for(int i = 0; i < initial_size; i++){
-               data[i] = other.data[i];
-          }
-     }
-     
-     ~AUDS(){
-          delete[] data;
-     }
-     
-     AUDS& operator=(AUDS other){
-          std::swap(initial_size, other.inital_size);
-          std::swap(current_size, other.current_size);
-          std::swap(data, other.data);
-  
-          return *this;
-     }
+		data = new T[current_size];
+		for(int i = 0; i < current_size; i++){
+			data[i] = other.data[i];
+		}
+	}
 
-     int size(){
-         return current_size;
-     }
-     void push(T x){
-     }
+	AUDS& operator=(AUDS other){
+		std::swap(current_size, other.current_size);
+		std::swap(current_value, other.current_value);
+		std::swap(data, other.data);
+
+		return *this;
+	}
+
      
-     T pop(){
-        //code here
-        return data[0];
-     }
+	~AUDS(){
+		delete[] data;
+	}
+
+	int size(){
+		return current_value;
+	}
+	void push(T x){
+		if(current_value == current_size){
+			current_size *= 1.5;
+			T* temp = new T[current_size];
+			for(int i = 0; i < current_size; i++){
+                        	temp[i] = data[i];
+                	}
+			delete[] data;
+			data = temp;
+		}
+		data[current_value] = x;
+		current_value++;
+	}
+     
+	T pop(){
+		T rtn;
+		int randomNum = rand() % (current_value+1);    
+		rtn = data[randomNum];
+		data[randomNum] = data[current_value];
+		current_value--;
+	
+        	return rtn;
+	}
+	
+	void print_data(){
+		for(int i = 0; i < current_size; i++){
+			std::cout << data[i] << std::endl;
+		}
+	}	
+
 private:
-     int initial_size;
-     int current_size;
+	int current_size;
+	int current_value;
      
-     T* data;
+	T* data;
 };
 
 
