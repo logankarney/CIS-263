@@ -5,10 +5,10 @@
 #include "AUDS.h"
 
 // Test cases take two parameters - the first is a test
-// // name and the second is a tag.
-// // This test merely checks that 1 is equal to 1.  It
-// // should always pass.  It is included here to show how
-// // to write test cases.
+// name and the second is a tag.
+// This test merely checks that 1 is equal to 1.  It
+// should always pass.  It is included here to show how
+// to write test cases.
 
 TEST_CASE( "Constructor test", "[creation]" ){
 	AUDS<int> a;
