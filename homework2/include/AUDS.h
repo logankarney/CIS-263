@@ -10,7 +10,7 @@ template <typename T>
 /*
   Simulation of an ArrayList style object.
   Features include dynamic memory allocation and generic programming
-  
+
   @author Logan Karney
   @version Winter 2018
   */
@@ -27,8 +27,7 @@ public:
 	}
      	
 	/* 
- 	  Copy constructor  
-	   
+ 	  Copy constructor 
 	  @param other AUDS object from which data will be pulled from	  
  	*/
 	AUDS(const AUDS &other){
@@ -45,7 +44,6 @@ public:
 
 	/*
  	  Copy operator
-	
 	  @param other AUDS object from which data will be pulled from  
 	*/
 	AUDS& operator=(AUDS other){
@@ -67,7 +65,6 @@ public:
 	
 	/*
  	  Returns the amount of elements stored in the object
-	 
 	  @return current_value	
    	*/
 	int size(){
@@ -76,7 +73,6 @@ public:
 
 	/*
  	  Adds element to the array
-
 	  @param x element being added
   	*/
 	void push(T x){
@@ -109,8 +105,7 @@ public:
 		current_value++;
 	}
      	/*
- 	  Removes a random element from the array
-		
+ 	  Removes a random element from the array	
 	  @return T element randomly popped from array
   	*/
 	T pop(){
