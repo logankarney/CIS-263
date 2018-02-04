@@ -4,33 +4,6 @@
 #include "catch.hpp"
 #include "AUDS.h"
 
-#include <algorithm>
-#include <string>
-#include "catch.hpp"
-#include "AUDS.h"
-
-/*int main(){       
-        AUDS<std::string> a;
-
-        for(int i = 0; i < 1000; i++){
-      
-                a.push(std::to_string(i));
-        }
-
-//        a.print_data();
-
-        std::cout << a.size() <<  std::endl;
-
-        //for(int i = 0; i < 1000; i++){
-          //      std::cout << a.pop() << std::endl;
-        //}
-        //std::cout << std::endl << a.size() << std::endl;
-     
-	return 0;
-}
-
-*/
-
 TEST_CASE( "Constructor test", "[creation]" ){
 	AUDS<int> a;
 	AUDS<float> b;
@@ -50,12 +23,12 @@ TEST_CASE( "Push test", "[inner]" ){
 
 TEST_CASE( "Pop test", "[inner]" ){
 	AUDS<std::string> s;
-	for(int i=0; i<100; i++){
+	for(int i=0; i<1000; i++){
 		s.push("Item " + std::to_string(i));
 	}
-	for(int i=0; i<100; i++){
+	for(int i=0; i<500; i++){
 		std::cout << s.pop() << std::endl;
 	}
-	CHECK( s.size() == 0 );
+	CHECK( s.size() == 500 );
 } 
 
