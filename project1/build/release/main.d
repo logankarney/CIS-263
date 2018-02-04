@@ -1,5 +1,5 @@
-build/release/main.o: src/main.cpp include/catch.hpp src/AUDS.h
+build/release/main.o: src/main.cpp include/catch.hpp include/AUDS.h
 
 include/catch.hpp:
 
-src/AUDS.h:
+include/AUDS.h:

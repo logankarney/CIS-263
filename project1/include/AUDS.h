@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <ctime>
 
 template <typename T>
 
@@ -20,7 +21,7 @@ public:
 		current_value = other.current_value;
           
 		data = new T[current_size];
-		for(int i = 0; i < current_size; i++){
+		for(int i = 0; i < current_size-1; i++){
 			data[i] = other.data[i];
 		}
 	}
@@ -57,11 +58,16 @@ public:
      
 	T pop(){
 		T rtn;
-		int randomNum = rand() % (current_value+1);    
-		rtn = data[randomNum];
+		srand(time(NULL));
+
+		int randomNum = rand() % (current_value);    
+	 	rtn = data[randomNum];
+		
+		current_value--;		
 		data[randomNum] = data[current_value];
-		current_value--;
+		
 	
+
         	return rtn;
 	}
 	
