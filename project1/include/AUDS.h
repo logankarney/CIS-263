@@ -46,7 +46,7 @@ public:
 		if(current_value == current_size){
 			current_size *= 1.5;
 			T* temp = new T[current_size];
-			for(int i = 0; i < current_size; i++){
+			for(int i = 0; i < current_value; i++){
                         	temp[i] = data[i];
                 	}
 			delete[] data;
