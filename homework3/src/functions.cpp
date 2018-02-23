@@ -7,7 +7,7 @@
 int main(){
 	std::string input = "a + b * c + d ";
 	input = " A + B + C + D ";
-	input = " a + b * c + ( d * e + f ) * g";
+	input = "a + b * c + ( d * e + f ) * g ";
 
 	functions f;
 
@@ -21,8 +21,8 @@ int main(){
 	for(int i = 0; i < size; i++){
 		std::cout << inputs[i] << std::endl << f.balancedSymbols(inputs[i]) << std::endl << std::endl;
 	}*/
-	
-	input += " ";
+	if(input[input.size()-1] != ' ')
+		input += " ";
 
 	std::cout << std::endl << "Infix:   "<< input << std::endl << "Postfix: " << f.iToP(input) << std::endl << std::endl;
 }
@@ -75,7 +75,7 @@ std::string functions::iToP(std::string input){
 			
 			//right parenthesis
 			if(precedence(token) == 0){
-				while(pile.size() != 0 && pile.top().compare("(") != 0){
+				while(pile.size() != 0 && !is_left(pile.top())){
 					output += pile.top() + " ";
 					pile.pop();
 				}
@@ -88,7 +88,7 @@ std::string functions::iToP(std::string input){
 				//handles when the top of the pile has a higher or equal precedence than the current "token" operator
 				int size_copy = pile.size();
 				while(size_copy != 0){
-					if(pile.top().compare("(") != 0){
+					if(!is_left(pile.top())){
 						output += pile.top() + " ";
 						pile.pop();
 					}
@@ -100,7 +100,8 @@ std::string functions::iToP(std::string input){
 		}
 		else{
 			//std::cout << "operand " << token << std::endl;
-			output += token + " ";
+			if(token.compare(" ") != 0)
+				output += token + " ";
 		}
 
 		input.erase(0, element + delimiter.length());
@@ -108,7 +109,7 @@ std::string functions::iToP(std::string input){
 	}
 
 	for(int i = 0; (i = pile.size()); i++){
-		if(pile.top().compare("(") != 0)
+		if(!is_left(pile.top()))
 			output += pile.top() + " ";
 		pile.pop();
 	}
@@ -130,13 +131,13 @@ bool functions::is_operator(std::string s){
 
 int functions::precedence(std::string s){
 
-	if(s.compare("(") == 0 || s.compare("{") == 0 || s.compare("[") == 0)
+	if(is_left(s))
 		return 3;
 	else if(s.compare("*") == 0 || s.compare("/") == 0)
 		return 2;
 	else if(s.compare("+") == 0 || s.compare("-") == 0)
 		return 1;
-	else if(s.compare(")") == 0)
+	else if(is_right(s))
 		return 0;
 
 	return -1;
