@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "my_hash.h"
 
 My_Hash::My_Hash(int size){
