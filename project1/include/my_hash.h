@@ -23,6 +23,8 @@ private:
 	int hasher1(std::string name);
 	int hasher2(std::string name);
 
+	int hasher3(std::string name);
+
 	/** Array used to store hashed elements */
 	std::vector<Superhero> heros;
 };
