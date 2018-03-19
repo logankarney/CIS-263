@@ -19,7 +19,7 @@ int My_Hash::hasher1(std::string name){
 }
 
 //https://stackoverflow.com/questions/8317508/hash-function-for-a-string
-int My_Hash::hasher3(std::string name){
+int My_Hash::hasher2(std::string name){
         int seed = 616;
         unsigned long hash = 0;
         for(int i = 0; i < abs(name.length()); i++){
@@ -28,7 +28,7 @@ int My_Hash::hasher3(std::string name){
    return hash % heros.size();
 }
 
-int My_Hash::hasher2(std::string name){
+int My_Hash::hasher3(std::string name){
 	int seed = 420;
 	unsigned long hash = 0;
 	for(int i = 0; i < name.length(); i++){
