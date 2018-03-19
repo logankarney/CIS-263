@@ -2,15 +2,28 @@
 #define MY_HASH_H_
 
 #include <string>
+#include <vector>
 #include "superhero.h"
 
-class my_hash{
+class My_Hash{
 public:
+	/*
+   	Constructors
+   	*/
+	My_Hash(int size);
+
+	My_Hash();
+
+	~My_Hash();
+
 	bool insert(const Superhero & s);
 	Superhero & get(const std::string name);
 
 private:
-	//three private hash methods
+	int hasher1(std::string name);
+
+	/** Array used to store hashed elements */
+	std::vector<Superhero> heros;
 };
 
 #endif
