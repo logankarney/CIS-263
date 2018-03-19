@@ -10,7 +10,9 @@ int main(){
 	My_Hash* hash = new My_Hash(17011);
 
 	//http://www.cplusplus.com/forum/general/17771/	
-	io::CSVReader<13, trim_chars<' '>> in("marvel-wikia-data.csv");
+	io::CSVReader<13, trim_chars<','>> in("marvel-wikia-data.csv");
+
+	
 	
 }
 
