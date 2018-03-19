@@ -7,7 +7,8 @@
 
 int main(){
 	//creation of vector
-	std::vector<Superhero> heros(17011);
+	//std::vector<Superhero> heros(17011);
+	My_Hash* hash = new My_Hash(17011);
 
 	//http://www.cplusplus.com/forum/general/17771/
 	std::ifstream infile( "include/marvel-wikia-data.csv");	
@@ -27,9 +28,21 @@ int main(){
 			break;
 		
 		//TODO: use s to  input data into superhero vector, add to heros
-		//std::cout << s << std::endl << std::endl;
+		std::cout << s << std::endl << std::endl;
 
 	}
 
 	return 0;
 }
+
+bool insert(const Superhero & s){
+	return true;
+}
+
+Superhero & get(const std::string name){
+	Superhero* rtn = new Superhero();
+
+	return *rtn;
+}
+
+
