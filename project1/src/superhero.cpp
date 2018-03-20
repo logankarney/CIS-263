@@ -131,7 +131,7 @@ void Superhero::set_year(int year){
 }
 
 char Superhero::str_to_char(std::string s, char t){
-	if(t == e){
+	if(t == 'e'){
 		/** eye_color  */
 		if(s.compare("Hazel Eyes") == 0)
 			return 'H';
@@ -182,7 +182,61 @@ char Superhero::str_to_char(std::string s, char t){
 		else if(s.compare("Compound Eyes") == 0)
                 	return 'C';
 
-	} else if(t == s){
+	} else if(t == 'h'){
+		/** hair color*/
+		if(s.compare("Brown Hair") == 0)
+			 return 'B';
+		 else if(s.compare("White Hair") == 0)
+                	return 'W';
+        	else if(s.compare("Black Hair") == 0)
+                	return 'b';
+        	else if(s.compare("Blonde Hair") == 0)
+                	return 'l';
+        	else if(s.compare("No Hair") == 0)
+                	return 'n';
+        	else if(s.compare("Blue Hair") == 0)
+                	return 'q';
+        	else if(s.compare("Red Hair") == 0)
+                	return 'r';
+        	else if(s.compare("Bald") == 0)
+                	return 'd';
+        	else if(s.compare("Auburn Hair") == 0)
+                	return 'A';
+        	else if(s.compare("Grey Hair") == 0)
+                	return 'G';
+        	else if(s.compare("Silver Hair") == 0)
+                	return 'S';
+        	else if(s.compare("Purple Hair") == 0)
+                	return 'P';
+        	else if(s.compare("Strawberry Blond Hair") == 0)
+                	return 's';
+        	else if(s.compare("Green Hair") == 0)
+                	return 'g';
+        	else if(s.compare("Reddish Brown Hair") == 0)
+                	return 'R';
+        	else if(s.compare("Gold Hair") == 0)
+                	return 'a';
+        	else if(s.compare("Orange Hair") == 0)
+                	return 'O';
+        	else if(s.compare("Pink Hair") == 0)
+                	return 'p';
+        	else if(s.compare("Variable Hair") == 0)
+                	return 'v';
+        	else if(s.compare("Yellow Hair") == 0)
+                	return 'y';
+        	else if(s.compare("Light Brown Hair") == 0)
+                	return 'L';
+        	else if(s.compare("Magenta Hair") == 0)
+                	return 'M';
+        	else if(s.compare("Bronze Hair") == 0)
+                	return 'o';
+        	else if(s.compare("Dyed Hair") == 0)
+                	return 'd';
+        	else if(s.compare("Orange-brown Hair") == 0)
+                	return 'n';
+
+
+	} else if(t == 's'){
 		/** sex */
 		if(s.compare("Male Characters") == 0)
 			return 'M';
@@ -193,7 +247,7 @@ char Superhero::str_to_char(std::string s, char t){
 		else if(s.compare("Agender Characters") == 0)
                 	return 'A';
 	
-	} else if(t == a){
+	} else if(t == 'a'){
 		/** alive */
 		if(s.compare("Living Characters") == 0)
 			return 'L';
