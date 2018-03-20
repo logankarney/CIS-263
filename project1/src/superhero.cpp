@@ -129,3 +129,10 @@ void Superhero::set_first_appearance(std::string first_appearance){
 void Superhero::set_year(int year){
 	this -> year = year;
 }
+
+char Superhero::str_to_char(std::string s){
+	/** eye_color  */
+	//if(s.compare(
+	//
+	return ' ';
+}
