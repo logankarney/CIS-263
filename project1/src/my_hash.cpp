@@ -19,6 +19,8 @@ My_Hash::~My_Hash(){
 }
 
 bool My_Hash::insert(const Superhero & s){
+	
+	bool rtn = true;
 
 	Superhero tmp = s;
 
@@ -35,7 +37,8 @@ bool My_Hash::insert(const Superhero & s){
 	if(heros[insertion_point % heros.size()].get_name().compare("") == 0)
 		heros[insertion_point % heros.size()] = tmp;
 	else{
-	
+		rtn = false;
+
 		while(heros[insertion_point % heros.size()].get_name().compare("") != 0){
 
 		//Probing
@@ -44,7 +47,7 @@ bool My_Hash::insert(const Superhero & s){
 	}
 
 
-	return true;
+	return rtn;
 }
 
 Superhero & My_Hash::get(const std::string name){
