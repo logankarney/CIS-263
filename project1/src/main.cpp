@@ -33,6 +33,8 @@ int main(){
 	int year;
 
 	int counter1 = 0;
+	int counter2 = 0;
+	int counter3 = 0;
 	//Reads column header names
 	in.read_header(io::ignore_no_column, "page_id", "name", "urlslug", "ID", "ALIGN", "EYE", "HAIR", "SEX", "GSM", "ALIVE", "APPEARANCES", "FIRST APPEARANCE", "Year");
 
@@ -47,16 +49,22 @@ int main(){
 		tmp.set_alive(str_to_char(alive_s, 'a'));
 
 		if(hash1 -> insert(tmp)){
-			std::cout << counter1 <<std::endl;
+		//	std::cout << counter1 <<std::endl;
 			counter1++;
 		}
-		hash2 -> insert(tmp);
-		hash3 -> insert(tmp);
+		if(hash2 -> insert(tmp)){
+			counter2++;
+		}
+		if(hash3 -> insert(tmp)){
+			counter3++;
+		}
 
 	}
 	std::ofstream myfile;
         myfile.open("RESULTS.md");
-        myfile << "Number of collisions in first hash: " + counter1;
+        myfile << "Number of collisions in first hash: " << counter1;
+	myfile	<< "\n Number of collisions in second hash: " << counter2;
+	myfile	<< "\n Number of collisions in third hash: " << counter3; 
         myfile.close();
 }
 
