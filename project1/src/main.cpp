@@ -35,7 +35,7 @@ int main(){
 	in.read_header(io::ignore_no_column, "page_id", "name", "urlslug", "ID", "ALIGN", "EYE", "HAIR", "SEX", "GSM", "ALIVE", "APPEARANCES", "FIRST APPEARANCE", "Year");
 
 	while(in.read_row(page_id, name, urlslug, id, alignment, eye_color_s, hair_color_s, sex_s, gsm, alive_s,appearances, first_appearance, year)){
-
+	
 		//std::cout << in.next_line() << std::endl;	
 		Superhero tmp(page_id, name, urlslug, id, alignment, ' ', ' ', ' ', gsm, ' ', appearances, first_appearance, year);		
 
@@ -44,22 +44,12 @@ int main(){
 		tmp.set_sex(str_to_char(sex_s, 's'));
 		tmp.set_alive(str_to_char(alive_s, 'a'));
 
-		//hash1 -> insert(tmp);
-		//hash2 -> insert(tmp);
-		//hash3 -> insert(tmp);
+		hash1 -> insert(tmp);
+		hash2 -> insert(tmp);
+		hash3 -> insert(tmp);
 
 	}
 	
-}
-
-bool insert(const Superhero & s){
-	return true;
-}
-
-Superhero & get(const std::string name){
-	Superhero* rtn = new Superhero();
-
-	return *rtn;
 }
 
 char str_to_char(std::string s, char t){
