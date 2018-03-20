@@ -31,7 +31,7 @@ int My_Hash::hasher2(std::string name){
 int My_Hash::hasher3(std::string name){
 	int seed = 420;
 	unsigned long hash = 0;
-	for(int i = 0; i < name.length(); i++){
+	for(int i = 0; i < abs(name.length()); i++){
 		hash = name[0] + 27 * name[1] + seed * name[3];
 	}
    return hash % heros.size();
