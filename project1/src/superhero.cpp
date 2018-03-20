@@ -181,6 +181,15 @@ char Superhero::str_to_char(std::string s){
 	else if(s.compare("Compound Eyes") == 0)
                 return 'C';
 
+	/** sex */
+	if(s.compare("Male Characters") == 0)
+		return 'M';
+	else if(s.compare("Female Characters") == 0)
+                return 'F';
+	else if(s.compare("Genderfluid Characters") == 0)
+                return 'G';
+	else if(s.compare("Agender Characters") == 0)
+                return 'A';	
 
 	return ' ';
 }
