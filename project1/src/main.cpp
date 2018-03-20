@@ -9,7 +9,9 @@ char str_to_char(std::string s, char type);
 int main(){
 	//Creation of vector
 	//std::vector<Superhero> heros(17011);
-	My_Hash* hash = new My_Hash(17011);
+	My_Hash* hash1 = new My_Hash(17011, 'a');
+	My_Hash* hash2 = new My_Hash(17011, 'b');
+	My_Hash* hash3 = new My_Hash(17011, 'c');
 
 	//Loads the file
 	io::CSVReader<13, io::trim_chars<' '>, io::double_quote_escape<',', '\"'> > in("include/marvel-wikia-data.csv");
@@ -42,7 +44,10 @@ int main(){
 		tmp.set_sex(str_to_char(sex_s, 's'));
 		tmp.set_alive(str_to_char(alive_s, 'a'));
 
-		std::cout << hash -> insert(tmp) << std::endl;
+		//std::cout << hash -> insert(tmp) << std::endl;
+		hash1 -> insert(tmp);
+		hash2 -> insert(tmp);
+		hash3 -> insert(tmp);
 
 	}
 	
