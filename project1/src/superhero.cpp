@@ -183,7 +183,7 @@ char Superhero::str_to_char(std::string s, char t){
                 	return 'C';
 
 	} else if(t == 'h'){
-		/** hair color*/
+		/** hair color */
 		if(s.compare("Brown Hair") == 0)
 			 return 'B';
 		 else if(s.compare("White Hair") == 0)
