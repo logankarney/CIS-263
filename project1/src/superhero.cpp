@@ -191,5 +191,11 @@ char Superhero::str_to_char(std::string s){
 	else if(s.compare("Agender Characters") == 0)
                 return 'A';	
 
+	/** alive */
+	if(s.compare("Living Characters") == 0)
+		return 'L';
+	else if(s.compare("Deceased Characters") == 0)
+		return 'D';
+
 	return ' ';
 }
