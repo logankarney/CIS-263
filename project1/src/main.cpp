@@ -44,10 +44,9 @@ int main(){
 		tmp.set_sex(str_to_char(sex_s, 's'));
 		tmp.set_alive(str_to_char(alive_s, 'a'));
 
-		//std::cout << hash -> insert(tmp) << std::endl;
-		hash1 -> insert(tmp);
-		hash2 -> insert(tmp);
-		hash3 -> insert(tmp);
+		//hash1 -> insert(tmp);
+		//hash2 -> insert(tmp);
+		//hash3 -> insert(tmp);
 
 	}
 	
