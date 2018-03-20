@@ -41,6 +41,9 @@ int main(){
 		tmp.set_hair_color(str_to_char(hair_color_s, 'h'));
 		tmp.set_sex(str_to_char(sex_s, 's'));
 		tmp.set_alive(str_to_char(alive_s, 'a'));
+
+		std::cout << hash -> insert(tmp) << std::endl;
+
 	}
 	
 }
