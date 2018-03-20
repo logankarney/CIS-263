@@ -1,8 +1,15 @@
 #include <stdlib.h>
 #include "my_hash.h"
 
+My_Hash::My_Hash(int size, char method){
+	heros = std::vector<Superhero>(size);
+	this -> method = method;
+}
+
 My_Hash::My_Hash(int size){
         heros = std::vector<Superhero>(size);
+
+	this -> method = 'a';
 }
 
 My_Hash::~My_Hash(){

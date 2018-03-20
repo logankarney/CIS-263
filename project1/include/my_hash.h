@@ -10,6 +10,8 @@ public:
 	/*
    	Constructors
    	*/
+	My_Hash(int size, char method);
+	
 	My_Hash(int size);
 
 	My_Hash();
@@ -26,6 +28,8 @@ private:
 
 	/** Array used to store hashed elements */
 	std::vector<Superhero> heros;
+
+	char method;
 };
 
 #endif
