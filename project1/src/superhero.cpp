@@ -130,72 +130,76 @@ void Superhero::set_year(int year){
 	this -> year = year;
 }
 
-char Superhero::str_to_char(std::string s){
-	/** eye_color  */
-	if(s.compare("Hazel Eyes") == 0)
-		return 'H';
-	else if(s.compare("Blue Eyes") == 0)
-		return 'B';
-	else if(s.compare("Brown Eyes") == 0)
-		return 'b';
-	else if(s.compare("Green Eyes") == 0)
-                return 'G';
-	else if(s.compare("Grey Eyes") == 0)
-                return 'g';
-	else if(s.compare("Yellow Eyes") == 0)
-                return 'Y';
-	else if(s.compare("Gold Eyes") == 0)
-                return 'U';
-	else if(s.compare("Red Eyes") == 0)
-                return 'R';
-	else if(s.compare("Black Eyeballs") == 0)
-                return 'd';
-	else if(s.compare("Amber Eyes") == 0)
-                return 'A';
-	else if(s.compare("Variable Eyes") == 0)
-                return 'V';
-	else if(s.compare("Black Eyes") == 0)
-                return 'D';
-	else if(s.compare("White Eyes") == 0)
-                return 'W';
-	else if(s.compare("Orange Eyes") == 0)
-                return 'O';
-	else if(s.compare("Silver Eyes") == 0)
-                return 'S';
-	else if(s.compare("Purple Eyes") == 0)
-                return 'P';
-	else if(s.compare("Pink Eyes") == 0)
-                return 'p';
-	else if(s.compare("One Eye") == 0)
-                return 'o';
-	else if(s.compare("Violet Eyes") == 0)
-                return 'v';
-	else if(s.compare("Multiple Eyes") == 0)
-                return 'M';
-	else if(s.compare("Magenta Eyes") == 0)
-                return 'm';
-	else if(s.compare("Yellow Eyeballs") == 0)
-                return 'y';
-	else if(s.compare("No Eyes") == 0)
-                return 'N';
-	else if(s.compare("Compound Eyes") == 0)
-                return 'C';
+char Superhero::str_to_char(std::string s, char t){
+	if(t == e){
+		/** eye_color  */
+		if(s.compare("Hazel Eyes") == 0)
+			return 'H';
+		else if(s.compare("Blue Eyes") == 0)
+			return 'B';
+		else if(s.compare("Brown Eyes") == 0)
+			return 'b';
+		else if(s.compare("Green Eyes") == 0)
+                	return 'G';
+		else if(s.compare("Grey Eyes") == 0)
+                	return 'g';
+		else if(s.compare("Yellow Eyes") == 0)
+                	return 'Y';
+		else if(s.compare("Gold Eyes") == 0)
+                	return 'U';
+		else if(s.compare("Red Eyes") == 0)
+                	return 'R';
+		else if(s.compare("Black Eyeballs") == 0)
+                	return 'd';
+		else if(s.compare("Amber Eyes") == 0)
+                	return 'A';
+		else if(s.compare("Variable Eyes") == 0)
+                	return 'V';
+		else if(s.compare("Black Eyes") == 0)
+                	return 'D';
+		else if(s.compare("White Eyes") == 0)
+                	return 'W';
+		else if(s.compare("Orange Eyes") == 0)
+                	return 'O';
+		else if(s.compare("Silver Eyes") == 0)
+                	return 'S';
+		else if(s.compare("Purple Eyes") == 0)
+                	return 'P';
+		else if(s.compare("Pink Eyes") == 0)
+                	return 'p';
+		else if(s.compare("One Eye") == 0)
+                	return 'o';
+		else if(s.compare("Violet Eyes") == 0)
+                	return 'v';
+		else if(s.compare("Multiple Eyes") == 0)
+                	return 'M';
+		else if(s.compare("Magenta Eyes") == 0)
+                	return 'm';
+		else if(s.compare("Yellow Eyeballs") == 0)
+                	return 'y';
+		else if(s.compare("No Eyes") == 0)
+                	return 'N';
+		else if(s.compare("Compound Eyes") == 0)
+                	return 'C';
 
-	/** sex */
-	if(s.compare("Male Characters") == 0)
-		return 'M';
-	else if(s.compare("Female Characters") == 0)
-                return 'F';
-	else if(s.compare("Genderfluid Characters") == 0)
-                return 'G';
-	else if(s.compare("Agender Characters") == 0)
-                return 'A';	
-
-	/** alive */
-	if(s.compare("Living Characters") == 0)
-		return 'L';
-	else if(s.compare("Deceased Characters") == 0)
-		return 'D';
+	} else if(t == s){
+		/** sex */
+		if(s.compare("Male Characters") == 0)
+			return 'M';
+		else if(s.compare("Female Characters") == 0)
+                	return 'F';
+		else if(s.compare("Genderfluid Characters") == 0)
+                	return 'G';
+		else if(s.compare("Agender Characters") == 0)
+                	return 'A';
+	
+	} else if(t == a){
+		/** alive */
+		if(s.compare("Living Characters") == 0)
+			return 'L';
+		else if(s.compare("Deceased Characters") == 0)
+			return 'D';
+	}
 
 	return ' ';
 }
