@@ -1,5 +1,7 @@
 #include <stdlib.h>
+#include <iostream>
 #include "my_hash.h"
+#include "superhero.h"
 
 My_Hash::My_Hash(int size, char method){
 	heros = std::vector<Superhero>(size);
@@ -17,6 +19,22 @@ My_Hash::~My_Hash(){
 }
 
 bool My_Hash::insert(const Superhero & s){
+
+	Superhero tmp = s;
+
+	int insertion_point;
+
+	//std::cout << tmp.get_name() << std::endl;
+
+	if(method == 'c')
+		insertion_point = hasher3(tmp.get_name());
+	else if(method == 'b')
+		insertion_point = hasher2(tmp.get_name());
+	else
+		insertion_point = hasher1(tmp.get_name());
+
+	std::cout << insertion_point << std::endl;
+
 	return true;
 }
 
