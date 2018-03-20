@@ -55,7 +55,7 @@ public:
 
 private:
 
-	char str_to_char(std::string s);
+	char str_to_char(std::string s, char var);
 
 	/** Instance variables */
 	int page_id;
