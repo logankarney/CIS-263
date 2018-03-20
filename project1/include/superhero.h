@@ -54,6 +54,9 @@ public:
 	void set_year(int year);
 
 private:
+
+	char str_to_char(std::string s);
+
 	/** Instance variables */
 	int page_id;
 	std::string name;
