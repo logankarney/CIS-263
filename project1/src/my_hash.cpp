@@ -22,9 +22,7 @@ bool My_Hash::insert(const Superhero & s){
 
 	Superhero tmp = s;
 
-	int insertion_point;
-
-	//std::cout << tmp.get_name() << std::endl;
+	unsigned int insertion_point;
 
 	if(method == 'c')
 		insertion_point = hasher3(tmp.get_name());
@@ -33,13 +31,48 @@ bool My_Hash::insert(const Superhero & s){
 	else
 		insertion_point = hasher1(tmp.get_name());
 
-	std::cout << insertion_point << std::endl;
+
+	if(heros[insertion_point % heros.size()].get_name().compare("") == 0)
+		heros[insertion_point % heros.size()] = tmp;
+	else{
+	
+		while(heros[insertion_point % heros.size()].get_name().compare("") != 0){
+
+		//Probing
+		insertion_point++;
+		}
+	}
+
 
 	return true;
 }
 
-//Superhero & My_Hash::get(const std::string name){
-//}
+Superhero & My_Hash::get(const std::string name){
+	
+	Superhero *rtn = new Superhero();
+	
+	unsigned int extraction_point;
+
+	if(method == 'c')
+                extraction_point = hasher3(name);
+        else if(method == 'b')
+                extraction_point = hasher2(name);
+        else
+                extraction_point = hasher1(name);
+	
+	int start = extraction_point;
+
+	while(heros[extraction_point % heros.size()].get_name().compare(name) != 0){
+		extraction_point++;
+		if(abs(extraction_point % heros.size()) == start){
+			return *rtn;
+		}
+	}
+
+	rtn = &heros[extraction_point];
+
+	return *rtn;
+}
 
 
 //https://stackoverflow.com/questions/8317508/hash-function-for-a-string
