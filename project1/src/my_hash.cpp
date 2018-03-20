@@ -9,6 +9,14 @@ My_Hash::~My_Hash(){
 	delete &heros;
 }
 
+bool My_Hash::insert(const Superhero & s){
+	return true;
+}
+
+//Superhero & My_Hash::get(const std::string name){
+//}
+
+
 //https://stackoverflow.com/questions/8317508/hash-function-for-a-string
 int My_Hash::hasher1(std::string name){
         int sum = 0;
