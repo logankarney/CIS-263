@@ -3,45 +3,72 @@
 #include "my_hash.h"
 #include "superhero.h"
 
+/*
+ * Constructor
+ *
+ * @param size
+ * 	instantiates vector with space for size elements
+ * @param method
+ * 	determines which hashing method will be used
+ */
 My_Hash::My_Hash(int size, char method){
 	heros = std::vector<Superhero>(size);
 	this -> method = method;
 }
 
+/*
+ * Constuctor
+ *
+ * @param size
+ * 	instantiates vector with space for size elements
+ */
 My_Hash::My_Hash(int size){
         heros = std::vector<Superhero>(size);
-
+	
+	//Default method to be used is hasher1
 	this -> method = 'a';
 }
 
+/*
+ * Default Destructor
+ */
 My_Hash::~My_Hash(){
 	delete &heros;
 }
 
+/*
+ * Method that inserts s into the vector
+ *
+ * @param s
+ * 	Superhero object being added
+ */
 bool My_Hash::insert(const Superhero & s){
 	
+	//var used to determine whether the element was inserted without a collision
 	bool rtn = true;
 
 	Superhero tmp = s;
 
 	unsigned int insertion_point;
-
+	
+	//Determines which hashing method is to be used
 	if(method == 'c')
 		insertion_point = hasher3(tmp.get_name());
 	else if(method == 'b')
 		insertion_point = hasher2(tmp.get_name());
 	else
 		insertion_point = hasher1(tmp.get_name());
-
-
+	
+	//Finds an empty element
 	if(heros[insertion_point % heros.size()].get_name().compare("") == 0)
 		heros[insertion_point % heros.size()] = tmp;
 	else{
+		//There was a collision
 		rtn = false;
 
 		while(heros[insertion_point % heros.size()].get_name().compare("") != 0){
 
-		//Probing
+		//Linear Probing
 		insertion_point++;
 		}
 	}
@@ -50,12 +77,19 @@ bool My_Hash::insert(const Superhero & s){
 	return rtn;
 }
 
+/*
+ * Returns the matching Superhero object based off of name
+ *
+ * @param name
+ * 	string used to compare the objects in the vector with
+ */
 Superhero & My_Hash::get(const std::string name){
 	
 	Superhero *rtn = new Superhero();
 	
 	unsigned int extraction_point;
 
+	//Determines what hashing function was used
 	if(method == 'c')
                 extraction_point = hasher3(name);
         else if(method == 'b')
@@ -67,6 +101,8 @@ Superhero & My_Hash::get(const std::string name){
 
 	while(heros[extraction_point % heros.size()].get_name().compare(name) != 0){
 		extraction_point++;
+	
+		//breaks out of loop if name does not match any elements
 		if(abs(extraction_point % heros.size()) == start){
 			return *rtn;
 		}
@@ -79,6 +115,12 @@ Superhero & My_Hash::get(const std::string name){
 
 
 //https://stackoverflow.com/questions/8317508/hash-function-for-a-string
+/*
+ *First hashing method
+ *
+ *@param name
+ *	var used to create hash value
+ */
 int My_Hash::hasher1(std::string name){
         int sum = 0;
         for (int k = 0; k < abs(name.length()); k++){
@@ -88,6 +130,12 @@ int My_Hash::hasher1(std::string name){
 }
 
 //https://stackoverflow.com/questions/8317508/hash-function-for-a-string
+/*
+ *Second hashing method
+ *
+ *@param name
+ *	var used to create hash value
+ */
 int My_Hash::hasher2(std::string name){
         int seed = 616;
         unsigned long hash = 0;
@@ -97,6 +145,12 @@ int My_Hash::hasher2(std::string name){
    return hash % heros.size();
 }
 
+/*
+ *Third Hashing method
+ *
+ *@param name
+ *	var used to create hash value
+ */
 int My_Hash::hasher3(std::string name){
 	int seed = 420;
 	unsigned long hash = 0;

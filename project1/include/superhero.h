@@ -3,6 +3,12 @@
 
 #include <string>
 
+/*
+ * Class that simulates a Superhero object
+ *
+ * @author Logan Karney
+ * @version Winter 2018
+ */
 class Superhero
 {
 public:

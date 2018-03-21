@@ -5,18 +5,34 @@
 #include "csv.h"
 #include <fstream>
 
+/** Method that converts a string into a char representation based on data from the CSV  */
 char str_to_char(std::string s, char type);
 
+
+/*
+ * Program that implements use of three different hashing functions
+ * 	by reading input from a CSV and counting collisions
+ *
+ * @author Logan Karney, George Daudlin
+ * @version Winter 2018
+ */
 int main(){
-	//Creation of vector
-	//std::vector<Superhero> heros(17011);
+	//Declaration of ofstream to later save collision results
+	std::ofstream myfile;
+
+	//Creation of hash objects
 	My_Hash* hash1 = new My_Hash(17011, 'a');
 	My_Hash* hash2 = new My_Hash(17011, 'b');
 	My_Hash* hash3 = new My_Hash(17011, 'c');
 
+	//Counters used to track collisions
+	int counter1 = 0;
+	int counter2 = 0;
+	int counter3 = 0;
+
 	//Loads the file
 	io::CSVReader<13, io::trim_chars<' '>, io::double_quote_escape<',', '\"'> > in("include/marvel-wikia-data.csv");
-	
+
 	//Variables in which the columns' data will be stored
 	int page_id;
 	std::string name;
@@ -32,42 +48,51 @@ int main(){
 	std::string first_appearance;
 	int year;
 
-	int counter1 = 0;
-	int counter2 = 0;
-	int counter3 = 0;
 	//Reads column header names
-	in.read_header(io::ignore_no_column, "page_id", "name", "urlslug", "ID", "ALIGN", "EYE", "HAIR", "SEX", "GSM", "ALIVE", "APPEARANCES", "FIRST APPEARANCE", "Year");
-
-	while(in.read_row(page_id, name, urlslug, id, alignment, eye_color_s, hair_color_s, sex_s, gsm, alive_s,appearances, first_appearance, year)){
+	in.read_header(io::ignore_no_column, "page_id", "name", "urlslug", 
+		"ID", "ALIGN", "EYE", "HAIR", "SEX", "GSM", "ALIVE", 
+		"APPEARANCES", "FIRST APPEARANCE", "Year");
 	
-		//std::cout << in.next_line() << std::endl;	
-		Superhero tmp(page_id, name, urlslug, id, alignment, ' ', ' ', ' ', gsm, ' ', appearances, first_appearance, year);		
+	//While the CSV has additional lines
+	while(in.read_row(page_id, name, urlslug, id, alignment, eye_color_s, 
+		hair_color_s, sex_s, gsm, alive_s,appearances, first_appearance, year)){
 
+		//Creates a Superhero object based off of scanned input	
+		Superhero tmp(page_id, name, urlslug, id, alignment, ' ', ' ', ' ', 
+			gsm, ' ', appearances, first_appearance, year);		
+
+		//Converts the scanned string to the appropriate char or bool value
 		tmp.set_eye_color(str_to_char(eye_color_s, 'e'));
 		tmp.set_hair_color(str_to_char(hair_color_s, 'h'));
 		tmp.set_sex(str_to_char(sex_s, 's'));
 		tmp.set_alive(str_to_char(alive_s, 'a'));
 
-		if(hash1 -> insert(tmp)){
-		//	std::cout << counter1 <<std::endl;
+		//Increments counters when insert(tmp) returns false
+		if(hash1 -> insert(tmp) == false){
 			counter1++;
 		}
-		if(hash2 -> insert(tmp)){
+		if(hash2 -> insert(tmp) == false){
 			counter2++;
 		}
-		if(hash3 -> insert(tmp)){
+		if(hash3 -> insert(tmp) == false){
 			counter3++;
 		}
 
 	}
-	std::ofstream myfile;
+
+	//Opens file RESULTS.md and writes the values of the counters
         myfile.open("RESULTS.md");
+
         myfile << "Number of collisions in first hash: " << counter1;
-	myfile	<< "\n Number of collisions in second hash: " << counter2;
-	myfile	<< "\n Number of collisions in third hash: " << counter3; 
+	myfile	<< "\nNumber of collisions in second hash: " << counter2;
+	myfile	<< "\nNumber of collisions in third hash: " << counter3; 
+
         myfile.close();
 }
 
+/*
+ * Method that converts a string into a char representation based on data from the CSV
+ */
 char str_to_char(std::string s, char t){
 	if(t == 'e'){
 		/** eye_color  */
@@ -172,7 +197,6 @@ char str_to_char(std::string s, char t){
                 	return 'd';
         	else if(s.compare("Orange-brown Hair") == 0)
                 	return 'n';
-
 
 	} else if(t == 's'){
 		/** sex */

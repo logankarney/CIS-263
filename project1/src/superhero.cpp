@@ -1,9 +1,15 @@
 #include <string>
 #include "superhero.h"
 
+/*
+ * Default Constructor
+ */
 Superhero::Superhero(){
 }
 
+/*
+ * Constructor that accepts a variety of private variables
+ */
 Superhero::Superhero(int page_id, std::string name, std::string urlslug,
         std::string id, std::string alignment, char eye_color,
         char hair_color, char sex, std::string gsm, bool alive,
@@ -24,6 +30,9 @@ Superhero::Superhero(int page_id, std::string name, std::string urlslug,
 	this -> year = year;
 }
 
+/*
+ * Default Destructor
+ */
 Superhero::~Superhero(){
 }
 
