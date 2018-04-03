@@ -1,6 +1,15 @@
 #include <string>
 #include "celebrity.h"
 
+Celebrity::Celebrity() {};
+
+Celebrity::Celebrity(std::name, int meet_value, std::string craft, bool has_met) {
+	this->name = name;
+	this->meet_value = meet_value;
+	this->craft = craft;
+	this->has_met = has_met;
+}
+
 //Name accessor
 std::string Celebrity::get_name() {
 	return this->name;
