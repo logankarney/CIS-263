@@ -9,7 +9,7 @@
 
 void create(int size, std::vector<Celebrity> *arry);
 
-void sort(std::vector<Celebrity> arry);
+void sort(std::vector<Celebrity> *arry);
 
 int main(int c, char *argv[]){
 	if(c == 2){
@@ -17,15 +17,15 @@ int main(int c, char *argv[]){
 		//how-to-convert-a-command-line-argument-to-int
 		std::istringstream iss(argv[1]);
 		int size;
-		std::vector<Celebrity> *arry = new std::vector<Celebrity>(size);
+		std::vector<Celebrity> arry(size);
 		if(iss >> size){
-			create(size, arry);
+			create(size, &arry);
 
-			for(Celebrity c : *arry){
+			for(Celebrity c : arry){
 				std::cout << c.get_name() << std::endl;
 			}
 
-			sort(*arry);
+			sort(&arry);
 
 			//for(Celebrity c: *arry){
 			//	std::cout << c.get_name() << std::endl;
@@ -38,7 +38,6 @@ int main(int c, char *argv[]){
 }
 
 void create(int size, std::vector<Celebrity> *arry){
-	//std::vector<Celebrity> arry(size);
 
 	std::string crafts[] = {"Actor","Artisan", "GVSU Faculty", "Producer", "Writer", "Astronaut", "Body-Builder", "Stunt-Double", "Superhero", "Supervillain"};
 
@@ -78,6 +77,6 @@ void create(int size, std::vector<Celebrity> *arry){
 	
 }
 
-void sort(std::vector<Celebrity> arry){
-	//bubble_sort(arry);
+void sort(std::vector<Celebrity> *arry){
+	//bubble_sort(*arry);
 }
