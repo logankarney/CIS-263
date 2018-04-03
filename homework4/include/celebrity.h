@@ -9,6 +9,10 @@ private:
 	bool has_met;
 
 public:
+	Celebrity();
+
+	Celebrity(std::string name, int meet_value, std::string craft, bool has_met);
+
 	std::string get_name();
 	
 	int get_meet_value();
