@@ -30,4 +30,6 @@ public:
 	void set_has_met(bool has_met);
 
 	Celebrity& operator<(Celebrity other);
+
+	Celebrity& operator<=(Celebrity other);
 };
