@@ -27,7 +27,7 @@ int main(int c, char *argv[]){
 
 			sort(&arry);
 
-			//for(Celebrity c: *arry){
+			//for(Celebrity c: arry){
 			//	std::cout << c.get_name() << std::endl;
 			//}
 		}
