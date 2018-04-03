@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "celebrity.h"
 
-void create(int size);
+void create(int size, std::vector<Celebrity> *arry);
 
 int main(int c, char *argv[]){
 	if(c == 2){
@@ -14,17 +14,22 @@ int main(int c, char *argv[]){
 		//how-to-convert-a-command-line-argument-to-int
 		std::istringstream iss(argv[1]);
 		int size;
+		std::vector<Celebrity> *arry = new std::vector<Celebrity>(size);
 		if(iss >> size){
-			create(size);
-			return 0;
+			create(size, arry);
+
+			for(Celebrity c : *arry){
+				std::cout << c.get_name() << std::endl;
+			}
 		}
+
 	}
 
 	return 1;
 }
 
-void create(int size){
-	std::vector<Celebrity> arry(size);
+void create(int size, std::vector<Celebrity> *arry){
+	//std::vector<Celebrity> arry(size);
 
 	std::string crafts[] = {"Actor","Artisan", "GVSU Faculty", "Producer", "Writer", "Astronaut", "Body-Builder", "Stunt-Double", "Superhero", "Supervillain"};
 
@@ -59,7 +64,7 @@ void create(int size){
 		c.set_craft(craft);
 		c.set_meet_value(met);
 
-		arry.push_back(c);
+		arry -> push_back(c);
 	}
-
+	
 }
