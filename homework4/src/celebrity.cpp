@@ -3,7 +3,7 @@
 
 Celebrity::Celebrity() {};
 
-Celebrity::Celebrity(std::name, int meet_value, std::string craft, bool has_met) {
+Celebrity::Celebrity(std::string name, int meet_value, std::string craft, bool has_met) {
 	this->name = name;
 	this->meet_value = meet_value;
 	this->craft = craft;
@@ -68,5 +68,21 @@ Celebrity& Celebrity::operator<(Celebrity other) {
 	}
 	else
 		return other;
+}
+
+//Override <= operator
+Celebrity& Celebrity::operator<=(Celebrity other) {
+        if(this->meet_value < other.meet_value || this->meet_value == other.meet_value)
+                return *this;
+        else {
+                if(this->has_met < other.has_met || this->has_met == other.has_met)
+                        return *this;
+                else {
+                        if(this->name.compare(other.name) > 0)
+                                return other;
+                        else
+                                return *this;
+                }
+        }
 }
 
