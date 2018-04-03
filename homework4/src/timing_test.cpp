@@ -5,8 +5,11 @@
 #include <cstdlib>
 #include <stdlib.h>
 #include "celebrity.h"
+#include "sorts.h"
 
 void create(int size, std::vector<Celebrity> *arry);
+
+void sort(std::vector<Celebrity> arry);
 
 int main(int c, char *argv[]){
 	if(c == 2){
@@ -21,6 +24,12 @@ int main(int c, char *argv[]){
 			for(Celebrity c : *arry){
 				std::cout << c.get_name() << std::endl;
 			}
+
+			sort(*arry);
+
+			//for(Celebrity c: *arry){
+			//	std::cout << c.get_name() << std::endl;
+			//}
 		}
 
 	}
@@ -67,4 +76,8 @@ void create(int size, std::vector<Celebrity> *arry){
 		arry -> push_back(c);
 	}
 	
+}
+
+void sort(std::vector<Celebrity> arry){
+	//bubble_sort(arry);
 }
