@@ -29,7 +29,7 @@ void create(int size){
 	std::string crafts[] = {"Actor","Artisan", "GVSU Faculty", "Producer", "Writer", "Astronaut", "Body-Builder", "Stunt-Double", "Superhero", "Supervillain"};
 
 	std::srand(time(NULL));	
-	for(int i = 0; i < abs(arry.size()); i++){
+	for(int i = 0; i < size; i++){
 		
 		std::string name = "";
 		int desire = 0;
@@ -51,17 +51,15 @@ void create(int size){
 		//Makes random bool for met
 		met = std::rand() % 2;	
 
-		std::cout << name << std::endl;
-		std::cout << desire << std::endl;
-		std::cout << craft << std::endl;
-		std::cout << met << std::endl << std::endl;
 		
-		//Celebrity *c = new Celebrity(name, desire, craft, met);
-		//arry.push_back(*c);
-		//delete(c);
+		Celebrity c;
+
+		c.set_name(name);
+		c.set_meet_value(desire);
+		c.set_craft(craft);
+		c.set_meet_value(met);
+
+		arry.push_back(c);
 	}
 
-	//for(int i = 0; i < abs(arry.size()); i++){
-		//std::cout << arry[1].get_name() << std::endl;
-	//}
 }
