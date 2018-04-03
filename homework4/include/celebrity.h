@@ -1,6 +1,13 @@
 #include <string>
 
 class Celebrity{
+
+private:
+	std::string name;
+	int meet_value;
+	std::string craft;
+	bool has_met;
+
 public:
 	std::string get_name();
 	
@@ -16,11 +23,7 @@ public:
 
 	void set_craft(std::string craft);
 
-	bool set_has_met(bool has_met);
+	void set_has_met(bool has_met);
 
-private:
-	std::string name;
-	int meet_value;
-	std::string craft;
-	bool has_met;
+	Celebrity& operator<(Celebrity other);
 };
