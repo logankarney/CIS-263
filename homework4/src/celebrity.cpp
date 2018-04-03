@@ -51,37 +51,37 @@ void Celebrity::set_has_met(bool has_met) {
 }
 
 //Override < operator
-Celebrity& Celebrity::operator<(Celebrity other) {
+bool Celebrity::operator<(Celebrity other) {
 	if(this->meet_value < other.meet_value)
-		return *this;
+		return true;
 	else if(this->meet_value == other.meet_value) {
 		if(this->has_met < other.has_met)
-			return *this;
+			return true;
 		else if(this->has_met == other.has_met) {
 			if(this->name.compare(other.name) > 0)
-				return other;
+				return false;
 			else
-				return *this;
+				return true;
 		}
 		else
-			return other;
+			return false;
 	}
 	else
-		return other;
+		return false;
 }
 
 //Override <= operator
-Celebrity& Celebrity::operator<=(Celebrity other) {
+bool Celebrity::operator<=(Celebrity other) {
         if(this->meet_value < other.meet_value || this->meet_value == other.meet_value)
-                return *this;
+                return true;
         else {
                 if(this->has_met < other.has_met || this->has_met == other.has_met)
-                        return *this;
+                        return true;
                 else {
-                        if(this->name.compare(other.name) > 0)
-                                return other;
+                        if(this->name.compare(other.name) < 0)
+                                return true;
                         else
-                                return *this;
+                                return false;
                 }
         }
 }
