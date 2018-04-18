@@ -24,7 +24,6 @@ int main(void){
 			subgrid(board, i, j);
 		}
 	}*/	
-
 }
 
 bool solve(int board[9][9]){
@@ -42,7 +41,6 @@ bool subgrid(int board[9][9], int r, int c, int target){
 }
 
 bool h_axis(int board[9][9], int r, int target){
-	
 	for(int i = 0; i < 9; i++){
 		if(board[r][i] == target)
 			return false;
@@ -51,11 +49,11 @@ bool h_axis(int board[9][9], int r, int target){
 	return true;
 }
 
-bool v_axis(int board[9][9], int c, int target){
-	
-	for(int i = 0; i < 0; i++){
-		if(board[i][c] == target)
+bool v_axis(int board[9][9], int c, int target){	
+	for(int i = 0; i < 9; i++){
+		if(board[i][c] == target){
 			return false;
+		}
 	}
 	return true;
 }
