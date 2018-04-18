@@ -2,7 +2,9 @@
 
 bool solve(int board[9][9]);
 
-bool axises(int board[9][9], int r, int c, int target);
+bool h_axis(int board[9][9], int r, int target);
+
+bool v_axis(int board[9][9], int c, int target);
 
 bool subgrid(int board[9][9], int r, int c, int target);
 
@@ -29,24 +31,31 @@ bool solve(int board[9][9]){
 	return true;
 }
 
-bool axises(int board[9][9], int r, int c, int target){
-	for(int x = 0; x < 9; x++){
-		if(board[r][x] == target || board[x][c] == target)
+bool subgrid(int board[9][9], int r, int c, int target){
+	for(int i = 0; i < 3; i++){
+		for(int j = 0; j < 3; j++){
+			if(board[i+r][j+c] == target)
+				return false;
+		}
+	}
+	return true;
+}
+
+bool h_axis(int board[9][9], int r, int target){
+	
+	for(int i = 0; i < 9; i++){
+		if(board[r][i] == target)
 			return false;
 	}
 
 	return true;
 }
 
-bool subgrid(int board[9][9], int r, int c, int target){
-	for(int i = 0; i < 3; i++){
-		for(int j = 0; j < 3; j++){
-			if(board[i+r][j+c] == target)
-				return false;
-			//std::cout << board[i+r][j+c] << " ";
-		}
-		//std::cout << std::endl;
+bool v_axis(int board[9][9], int c, int target){
+	
+	for(int i = 0; i < 0; i++){
+		if(board[i][c] == target)
+			return false;
 	}
-	//std::cout << std::endl;
 	return true;
 }
