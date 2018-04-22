@@ -6,7 +6,7 @@ int h_axis(int board[9][9], int r, int target);
 
 int v_axis(int board[9][9], int c, int target);
 
-bool subgrid(int board[9][9], int r, int c, int target);
+int subgrid(int board[9][9], int r, int c, int target);
 
 bool check_finished(int board[9][9]);
 
@@ -15,6 +15,14 @@ void print_grid(int board[9][9]);
 //taken from https://github.com/irawoodring/263/blob/master/backtracking/sample_code/backtracking.cpp
 bool find_spot(int board[9][9], int & r, int & c);
 
+/**
+ * Program that solves a sudoku board using backtracking
+ *
+ * Note: Compiles but does not run correctly
+ *
+ * @author Logan Karney
+ * @version Winter 2018
+ */
 int main(void){
 	int board[9][9] = {{ 0, 3, 0, 0, 0, 0, 0, 2, 0 },
         	           { 0, 9, 0, 0, 0, 0, 0, 8, 5 },
@@ -29,36 +37,58 @@ int main(void){
 	solve(board, 0, 0);
 }
 
+
+/*
+ * Solves the board recursively
+ *
+ * @param board
+ * 	sudoku board being used
+ * @param curr_r
+ * 	current row value
+ * @param curr_c
+ * 	current c value
+ */
 bool solve(int board[9][9], int curr_r, int curr_c){
 	
+	//if the program cannot find an empty spot
 	if(find_spot(board, curr_r, curr_c) == false){
 		return true;
 	}
 
+	//attempts to use all possible guesses
 	int guess = 1;
-
 	while(guess < 10){
 
+		//if the current guess can be placed on the board
 		if(h_axis(board,curr_r,guess) == 0 && v_axis(board, curr_c, guess) == 0 && subgrid(board, curr_r, curr_c, guess) == 0){
 			board[curr_r][curr_c] = guess;
 	
 			print_grid(board);
 			std::cout << std::endl;
 
+			//if the puzzle is finished, returns true
 			if(solve(board,curr_r,curr_c))
 				return true;
-			board[curr_r][curr_c] = 0;
+
+			//else, the guess wasn't correct, removes it
+			else
+				board[curr_r][curr_c] = 0;
 		}
 		else{
+			//increments guess
 			guess++;
 		}
 	}
 
-	
+	//All possibilities could not be used, returns false
 	return false;
 }
 
-bool subgrid(int board[9][9], int r, int c, int target){
+/*
+ * Method that checks the subgrid to find the ammount of occurances of target
+ *
+ */
+int subgrid(int board[9][9], int r, int c, int target){
 	
 	r = 3 * (r/3);
 	c = 3 * (c/3);
@@ -68,15 +98,16 @@ bool subgrid(int board[9][9], int r, int c, int target){
 
 	for(int i = 0; i < 3; i++){
 		for(int j = 0; j < 3; j++){
-			//std::cout << board[i+r][j+c] << " ";
 			if(board[i+r][j+c] == target)
 				rtn++;
 		}
-		//std::cout << std::endl;
 	}
 	return rtn;
 }
 
+/*
+ * Method that checks the row to find the ammount of occurances of target
+ */
 int h_axis(int board[9][9], int r, int target){
 	//number of occurances of target
 	int rtn = 0;
@@ -89,6 +120,9 @@ int h_axis(int board[9][9], int r, int target){
 	return rtn;
 }
 
+/*
+ * Method that checks the column to find the ammount of occurances of target
+ */
 int v_axis(int board[9][9], int c, int target){	
 	//number of occurances of target
 	int rtn = 0;
@@ -101,6 +135,9 @@ int v_axis(int board[9][9], int c, int target){
 	return rtn;
 }
 
+/*
+ * Method that prints out all values of the board
+ */
 void print_grid(int board[9][9]){
 	for(int i = 0; i < 9; i++){
 		for(int j = 0; j < 9; j++){
@@ -110,6 +147,9 @@ void print_grid(int board[9][9]){
 	}
 }
 
+/**
+ * Method that checks that all moves are valid
+ */
 bool check_finished(int board[9][9]){
 	for(int i = 0; i < 9; i+= 3){
                 for(int j = 0; j < 9; j+= 3){	
@@ -131,6 +171,9 @@ bool check_finished(int board[9][9]){
 }
 
 //taken from https://github.com/irawoodring/263/blob/master/backtracking/sample_code/backtracking.cpp
+/**
+ * Method that finds an empty spot
+ */
 bool find_spot(int board[9][9], int & r, int & c){
 	for(int i=0; i<9; i++){
 		for(int j=0; j<9; j++){
